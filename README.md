@@ -15,8 +15,8 @@ A REST API server that manages sporting events and their betting odds. External 
 
 ## Requirements
 
-- [Go 1.22+](https://go.dev/dl/)
-- [MongoDB](https://www.mongodb.com/try/download/community) running locally (or reachable over the network)
+- **Go 1.22+** — `brew install go` (macOS) or download from [go.dev/dl](https://go.dev/dl/)
+- **MongoDB** — install steps in [Getting started](#getting-started) below
 
 ---
 
@@ -35,15 +35,30 @@ cd betting_sports_event_server_go
 go mod tidy
 ```
 
-### 3. Start MongoDB
+### 3. Install and start MongoDB
 
-If you have MongoDB installed locally, start it with:
-
+**macOS (Homebrew):**
 ```bash
-mongod
+brew tap mongodb/brew
+brew install mongodb-community
+brew services start mongodb-community
 ```
 
-It runs on `127.0.0.1:27017` by default, which is what the server expects.
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt-get install -y mongodb
+sudo systemctl start mongodb
+```
+
+**Windows:** Download and run the installer from [mongodb.com](https://www.mongodb.com/try/download/community), then start it as a service.
+
+Verify MongoDB is running:
+```bash
+brew services list | grep mongodb   # macOS
+sudo systemctl status mongodb       # Linux
+```
+
+MongoDB runs on `127.0.0.1:27017` by default, which is what the server expects.
 
 ### 4. Build and run the server
 
